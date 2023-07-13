@@ -4,6 +4,9 @@
 # If the average is <0 or >100,  print an error
 # Else calculate a grade as 90-100 as A, 80-90 as B, 70-80 as C, else F.
 # Print out the student's name and grade.
+# r4:               r5: student name
+# r6: grade         r7: >= 0 flag
+# r8: <= 100 flag   r9:
 
 .text
 .global main
@@ -62,8 +65,33 @@ main:
 .text
 .global gradeCalc
 
-  
+  SUB sp, sp, #4
+  STR ls,[lr, #0]
 
+  #Verify grade is greater than or equal to 0
+  MOV r0, #0
+  CMP r6, r0
+  BLT else1
+    LDR r0, =tooLow
+    BL printf
+    B EndIf
+  els1e:
+
+  #Verify grade is less than or equal to 100
+  MOV r0, #100
+  CMP r6, r0
+  BGT else2
+    LDR r0, =tooHigh
+    BL printf
+    B EndIf
+  else2:
+
+  EndIf
+
+  LDR lr, [sp, #0]
+  ADD sp, sp, #4
+  MOV pc, lr
+  
 .data
 
 #END gradeCalc
