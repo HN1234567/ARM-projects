@@ -88,11 +88,61 @@ main:
 
   EndIf
 
+  #Check greater than 90
+  MOV r0, #90
+  CMP r6, r0
+  BGE 
+    LDR r0, =printGrade
+    LDR r1, =gradeA
+    LDR r1, [r1, #0]
+    BL printf
+    B EndIf
+
+  #Check greater than 80
+  MOV r0, #80
+  CMP r6, r0
+  BGE 
+    LDR r0, =printGrade
+    LDR r1, =gradeB
+    LDR r1, [r1, #0]
+    BL printf
+    B EndIf
+
+  #Check greater than 70
+  MOV r0, #70
+  CMP r6, r0
+  BGE 
+    LDR r0, =printGrade
+    LDR r1, =gradeC
+    LDR r1, [r1, #0]
+    BL printf
+    B EndIf
+    
+  #Check greater than 60
+  MOV r0, #60
+  CMP r6, r0
+  BGE 
+    LDR r0, =printGrade
+    LDR r1, =gradeB
+    LDR r1, [r1, #0]
+    BL printf
+    B EndIf
+    
+  EndIf
+
   LDR lr, [sp, #0]
   ADD sp, sp, #4
   MOV pc, lr
   
 .data
+  tooLow:
+  tooHigh:
+  printGrade: 
+  gradeA:
+  gradeB:
+  gradeC:
+  gradeD:
+  gradeF:
 
 #END gradeCalc
 
