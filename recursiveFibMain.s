@@ -26,7 +26,7 @@ main:
   LDR r6, [r6]
 
   # Calculate letter grade
-  # BL fibNum
+  BL fibNum
 
   # Print grade result
   LDR r0, =resultString
@@ -53,27 +53,37 @@ main:
 .text
 .global fibNum
 
-gradeCalc:
+fibNum:
 
   # Save return to OS on stack
   SUB sp, sp, #4
   STR lr, [sp, #0]
 
+  cmp r6, #0
+  moveq r7, #0    @ F(0) = 0
+  beq fibReturn
 
+  cmp r6, #1
+  moveq r7, #1    @ F(1) = 1
+  beq fibReturn
+
+  sub r6, r6, #1  @ Calculate F(n-1)
+  bl fibNum
+
+  mov r8, r7      @ Save F(n-1)
+
+  sub r6, r6, #1  @ Calculate F(n-2)
+  bl fibNum
+
+  add r7, r7, r8  @ F(n) = F(n-1) + F(n-2)
+
+  fibReturn:
 
   LDR lr, [sp, #0]
   ADD sp, sp, #4
   MOV pc, lr
   
 .data
-  tooLow: .asciz "too low\n"
-  tooHigh: .asciz "too hi\n"
-  printGrade: .asciz "Grade is: %s\n"
-  gradeA: .asciz "A"
-  gradeB: .asciz "B"
-  gradeC: .asciz "C"
-  gradeD: .asciz "D"
-  gradeF: .asciz "F"
 
 #END gradeCalc
 
