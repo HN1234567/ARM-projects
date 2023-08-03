@@ -1,0 +1,87 @@
+s23s26@rpi-buster-armhf:~/Module11$ ./otherFib
+
+Enter a number: 3
+
+(n-1) in:
+r6 is 2
+r7 is 0
+r8 is 0
+
+
+(n-1) in:
+r6 is 1
+r7 is 0
+r8 is 0
+
+
+(n-1) out:
+r6 is 1
+r7 is 1
+r8 is 0
+
+
+(n-2) in:
+r6 is 0
+r7 is 1
+r8 is 1
+
+
+(n-2) out:
+r6 is 0
+r7 is 1
+r8 is 1
+
+
+(n-1) out:
+r6 is 2
+r7 is 2
+r8 is 1
+
+
+(n-2) in:
+r6 is 1
+r7 is 2
+r8 is 2
+
+
+(n-2) out:
+r6 is 1
+r7 is 1
+r8 is 2
+
+
+
+The Fibonacci number is: 3
+
+s23s26@rpi-buster-armhf:~/Module11$ make
+gcc otherFibMain.s -g -o otherFib
+s23s26@rpi-buster-armhf:~/Module11$ ./otherFib
+
+Enter a number: 2
+
+(n-1) in:
+r6 is 1
+r7 is 0
+r8 is 0
+
+
+(n-1) out:
+r6 is 1
+r7 is 1
+r8 is 0
+
+
+(n-2) in:
+r6 is 0
+r7 is 1
+r8 is 1
+
+
+(n-2) out:
+r6 is 0
+r7 is 0
+r8 is 1
+
+
+
+The Fibonacci number is: 1
